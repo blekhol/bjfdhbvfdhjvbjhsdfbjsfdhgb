@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:bjfdhbvfdhjvbjhsdfbjsfdhgb"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
-    </Grid>
+	<Canvas x:Name="canvas">
+		<Canvas.Background>
+			<ImageBrush ImageSource="a.png" Stretch="UniformToFill"/>
+		</Canvas.Background>
+		
+		
+		<Ellipse x:Name="madar" Height="28" Canvas.Left="57" Stroke="Black" Canvas.Top="179" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFFFDE00"/>
+
+
+	</Canvas>
 </Window>
