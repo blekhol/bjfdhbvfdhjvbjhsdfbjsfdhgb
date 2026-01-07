@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,8 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
     {
         private DispatcherTimer dispatcherTimer;
 
+		public static Random rnd = new Random();
+
 		public MainWindow()
         {
             InitializeComponent();
@@ -30,14 +33,14 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 
 		private void Update(object sender, EventArgs e)
 		{
-			madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) + 3);
+			madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) + 1.5);
 		}
 
 		private void Ugras(object sender, KeyEventArgs e)
 		{
 			if (e.Key == Key.Space)
 			{
-				madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) - 60);
+				madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) - 40);
 			}
 		}
 	}

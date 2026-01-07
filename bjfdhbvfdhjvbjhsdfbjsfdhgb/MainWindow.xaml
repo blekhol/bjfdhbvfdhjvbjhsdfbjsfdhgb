@@ -11,9 +11,31 @@
 		<Canvas.Background>
 			<ImageBrush ImageSource="a.png" Stretch="UniformToFill"/>
 		</Canvas.Background>
-		
-		
-		<Ellipse x:Name="madar" Height="28" Canvas.Left="57" Stroke="Black" Canvas.Top="179" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFFFDE00"/>
+
+
+		<Ellipse x:Name="madar" Height="28" Canvas.Left="111" Stroke="Black" Canvas.Top="155" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFFFDE00"/>
+
+		<GroupBox BorderThickness="0" Canvas.Left="825" Canvas.Top="-65" HorizontalAlignment="Left" VerticalAlignment="Top">
+			<StackPanel>
+				<Rectangle Height="281" Stroke="Black" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00"/>
+				<Rectangle Height="30" Stroke="Black" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00" />
+			</StackPanel>
+		</GroupBox>
+
+		<GroupBox BorderThickness="0" Canvas.Left="825" Canvas.Top="375" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+			<GroupBox.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="180"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</GroupBox.RenderTransform>
+			<StackPanel>
+				<Rectangle Height="281" Canvas.Left="380" Stroke="Black" Canvas.Top="172" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00"/>
+				<Rectangle Height="30" Canvas.Left="374" Stroke="Black" Canvas.Top="169" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00" />
+			</StackPanel>
+		</GroupBox>
 
 
 	</Canvas>
