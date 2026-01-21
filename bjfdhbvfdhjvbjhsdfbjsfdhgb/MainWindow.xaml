@@ -14,21 +14,5 @@
 
 
 		<Ellipse x:Name="madar" Height="28" Canvas.Left="111" Stroke="Black" Canvas.Top="155" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFFFDE00"/>
-
-		<GroupBox BorderThickness="0" Canvas.Left="828" Canvas.Top="356" HorizontalAlignment="Left" VerticalAlignment="Top">
-			<StackPanel>
-				<Rectangle Height="281" Stroke="Black" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00"/>
-				<Rectangle Height="30" Stroke="Black" Width="74" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00" />
-			</StackPanel>
-		</GroupBox>
-
-		<GroupBox BorderThickness="0" Canvas.Left="834" Canvas.Top="-10" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-			<StackPanel>
-				<Rectangle Height="30" Stroke="Black" Width="74" Fill="#FF2BFF00" />
-				<Rectangle Height="281" Canvas.Left="380" Stroke="Black" Canvas.Top="172" Width="62" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FF2BFF00"/>
-			</StackPanel>
-		</GroupBox>
-
-
 	</Canvas>
 </Window>

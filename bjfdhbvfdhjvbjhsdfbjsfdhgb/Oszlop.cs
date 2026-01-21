@@ -11,43 +11,29 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 {
     class Oszlop
     {
-		private GroupBox oszlopBox = new GroupBox();
+		private System.Windows.Shapes.Rectangle felsoRect;
+		private System.Windows.Shapes.Rectangle alsoRect;
 
 		public Oszlop()
 		{
+			felsoRect = new System.Windows.Shapes.Rectangle();
+			alsoRect = new System.Windows.Shapes.Rectangle();
 		}
 
-		public GroupBox OszlopBox { get => oszlopBox; }
+		public System.Windows.Shapes.Rectangle FelsoRect { get => felsoRect; set => felsoRect = value; }
+		public System.Windows.Shapes.Rectangle AlsoRect { get => alsoRect; set => alsoRect = value; }
 
-		public void OszlopLetrehozas(bool forditott)
+		public void OszlopLetrehozas()
         {
-            StackPanel stackPanel = new StackPanel();
-
-            System.Windows.Shapes.Rectangle felsoRect = new System.Windows.Shapes.Rectangle();
 			felsoRect.Width = 75;
             felsoRect.Height = 30;
             felsoRect.Stroke = Brushes.Black;
             felsoRect.Fill = Brushes.Green;
 
-			System.Windows.Shapes.Rectangle alsoRect = new System.Windows.Shapes.Rectangle();
 			alsoRect.Width = 60;
 			alsoRect.Height = 280;
 			alsoRect.Stroke = Brushes.Black;
 			alsoRect.Fill = Brushes.Green;
-
-			if (forditott)
-            {
-				stackPanel.Children.Add(felsoRect);
-				stackPanel.Children.Add(alsoRect);
-			}
-			else
-			{
-				stackPanel.Children.Add(alsoRect);
-				stackPanel.Children.Add(felsoRect);
-			}
-
-			oszlopBox.Content = stackPanel;
-            oszlopBox.BorderThickness = new System.Windows.Thickness(0);
 		}
 	}
 }
