@@ -25,6 +25,20 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
         {
             InitializeComponent();
 
+			Start("köd");
+		}
+
+		private void Start(string palya)
+		{
+			if (palya == "köd")
+			{
+				kod.Visibility = Visibility.Visible;
+			}
+			else if (palya == "eso")
+			{
+				eso.Visibility = Visibility.Visible;
+			}
+
 			dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 			dispatcherTimer.Tick += new EventHandler(Update);
 			dispatcherTimer.Interval = TimeSpan.FromMilliseconds(8);
@@ -39,7 +53,7 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 		{
 			madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) + 1.5);
 
-			foreach (var oszlop in oszlopok)
+			foreach (var oszlop in oszlopok.ToList())
 			{
 				oszlop.FelsoRect.SetValue(Canvas.LeftProperty, Canvas.GetLeft(oszlop.FelsoRect) - 1.5);
 				oszlop.AlsoRect.SetValue(Canvas.LeftProperty, Canvas.GetLeft(oszlop.AlsoRect) - 1.5);
@@ -88,7 +102,6 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 		private void Collision()
 		{
 			Rect madarRect = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
-
 			EllipseGeometry madarGeo = new EllipseGeometry(madarRect);
 
 			foreach (var oszlop in oszlopok)

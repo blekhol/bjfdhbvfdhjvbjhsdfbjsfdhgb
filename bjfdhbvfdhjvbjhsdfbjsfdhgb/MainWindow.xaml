@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:bjfdhbvfdhjvbjhsdfbjsfdhgb"
+		xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
@@ -14,5 +15,12 @@
 
 
 		<Ellipse x:Name="madar" Height="28" Canvas.Left="111" Stroke="Black" Canvas.Top="155" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="#FFFFDE00"/>
+		<Image x:Name="kod" Canvas.Left="0" Canvas.Top="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="1098" Visibility="Hidden">
+			<Image.Source>
+				<BitmapImage UriSource="asd.png"/>
+			</Image.Source>
+		</Image>
+
+		<Image x:Name="eso" gif:ImageBehavior.AnimatedSource="eso.gif" Height="688" Width="1084" Canvas.Left="-87" Canvas.Top="-84" Visibility="Hidden" />
 	</Canvas>
 </Window>

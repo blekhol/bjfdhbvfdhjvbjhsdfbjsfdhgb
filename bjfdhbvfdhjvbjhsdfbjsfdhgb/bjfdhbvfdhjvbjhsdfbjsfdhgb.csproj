@@ -10,10 +10,18 @@
 
   <ItemGroup>
     <None Remove="a.png" />
+    <None Remove="asd.png" />
+    <None Remove="eso.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="a.png" />
+    <Resource Include="asd.png" />
+    <Resource Include="eso.gif" />
   </ItemGroup>
 
 </Project>
