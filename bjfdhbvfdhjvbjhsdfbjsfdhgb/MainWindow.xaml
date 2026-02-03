@@ -22,5 +22,14 @@
 		</Image>
 
 		<Image x:Name="eso" gif:ImageBehavior.AnimatedSource="eso.gif" Height="688" Width="1084" Canvas.Left="-87" Canvas.Top="-84" Visibility="Hidden" />
-	</Canvas>
+
+        <Grid x:Name="startMenu" Background="#AA000000" Width="400" Height="250" Canvas.Left="200" Canvas.Top="100">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Flappy Bird" FontSize="36" Foreground="White" HorizontalAlignment="Center"/>
+                <Button Content="Sima" Width="120" Height="40" Click="RegularButton_Click"/>
+                <Button Content="Ködös" Width="120" Height="40" Click="FogButton_Click"/>
+                <Button Content="Esős" Width="120" Height="40" Click="RainButton_Click"/>
+            </StackPanel>
+        </Grid>
+    </Canvas>
 </Window>

@@ -14,7 +14,7 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 		private System.Windows.Shapes.Rectangle felsoRect;
 		private System.Windows.Shapes.Rectangle alsoRect;
 
-		public Oszlop()
+        public Oszlop()
 		{
 			felsoRect = new System.Windows.Shapes.Rectangle();
 			alsoRect = new System.Windows.Shapes.Rectangle();
@@ -23,7 +23,10 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 		public System.Windows.Shapes.Rectangle FelsoRect { get => felsoRect; set => felsoRect = value; }
 		public System.Windows.Shapes.Rectangle AlsoRect { get => alsoRect; set => alsoRect = value; }
 
-		public void OszlopLetrehozas()
+        public bool Passed { get; set; } = false;
+
+
+        public void OszlopLetrehozas()
         {
 			felsoRect.Width = 75;
             felsoRect.Height = 30;

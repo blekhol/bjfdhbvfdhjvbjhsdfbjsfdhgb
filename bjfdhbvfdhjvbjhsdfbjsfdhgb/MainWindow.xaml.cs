@@ -21,20 +21,49 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 
 		List<Oszlop> oszlopok = [];
 
-		public MainWindow()
+        double utolsoOszlopX = 700;
+        const double OSZLOP_TAVOLSAG = 100;
+
+        DispatcherTimer spawnTimer;
+
+        int score = 0;
+        double madarX;
+
+
+        public MainWindow()
         {
             InitializeComponent();
-
-			Start("köd");
 		}
 
-		private void Start(string palya)
+        private void RegularButton_Click(object sender, RoutedEventArgs e)
+        {
+            startMenu.Visibility = Visibility.Hidden;
+            Start("");
+        }
+
+        private void RainButton_Click(object sender, RoutedEventArgs e)
+        {
+            startMenu.Visibility = Visibility.Hidden;
+            Start("eső");
+        }
+
+        private void FogButton_Click(object sender, RoutedEventArgs e)
+        {
+            startMenu.Visibility = Visibility.Hidden;
+            Start("köd");
+        }
+
+
+        private void Start(string palya)
 		{
-			if (palya == "köd")
+            madarX = Canvas.GetLeft(madar);
+
+
+            if (palya == "köd")
 			{
 				kod.Visibility = Visibility.Visible;
 			}
-			else if (palya == "eso")
+			else if (palya == "eső")
 			{
 				eso.Visibility = Visibility.Visible;
 			}
@@ -46,10 +75,14 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 
 			this.KeyUp += new KeyEventHandler(Ugras);
 
-			UjOszlop();
-		}
+			//oszlop csinálás
+            spawnTimer = new DispatcherTimer();
+            spawnTimer.Interval = TimeSpan.FromSeconds(1.6);
+            spawnTimer.Tick += (s, e) => UjOszlop();
+            spawnTimer.Start();
+        }
 
-		private void Update(object sender, EventArgs e)
+        private void Update(object sender, EventArgs e)
 		{
 			madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) + 1.5);
 
@@ -57,7 +90,21 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 			{
 				oszlop.FelsoRect.SetValue(Canvas.LeftProperty, Canvas.GetLeft(oszlop.FelsoRect) - 1.5);
 				oszlop.AlsoRect.SetValue(Canvas.LeftProperty, Canvas.GetLeft(oszlop.AlsoRect) - 1.5);
-			}
+
+                if (Canvas.GetLeft(oszlop.FelsoRect) < -100)
+                {
+                    canvas.Children.Remove(oszlop.FelsoRect);
+                    canvas.Children.Remove(oszlop.AlsoRect);
+                    oszlopok.Remove(oszlop);
+                }
+
+                if (!oszlop.Passed && Canvas.GetLeft(oszlop.FelsoRect) + oszlop.FelsoRect.Width < madarX && oszlopok.IndexOf(oszlop) % 2 == 0)
+                {
+                    oszlop.Passed = true;
+                    score++;
+                    Title = "Score: " + score;
+                }
+            }
 
 			Collision();
 		}
@@ -70,41 +117,46 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 			}
 		}
 
-		private void UjOszlop()
-		{
-			int felsoOszlopTop = rnd.Next(-240, -64);
-			int alsoOszlopTop = felsoOszlopTop + 440;
+        private void UjOszlop()
+        {
+            int felsoOszlopTop = rnd.Next(-240, -64);
+            int alsoOszlopTop = felsoOszlopTop + 440;
 
-			Oszlop felsoOszlop = new Oszlop();
-			Oszlop alsoOszlop = new Oszlop();
+            double spawnX = utolsoOszlopX + OSZLOP_TAVOLSAG;
 
-			felsoOszlop.OszlopLetrehozas();
-			felsoOszlop.AlsoRect.SetValue(Canvas.LeftProperty, 700.0);
-			felsoOszlop.AlsoRect.SetValue(Canvas.TopProperty, (double)felsoOszlopTop);
-			felsoOszlop.FelsoRect.SetValue(Canvas.LeftProperty, 693.0);
-			felsoOszlop.FelsoRect.SetValue(Canvas.TopProperty, (double)felsoOszlopTop + 250);
+            Oszlop felsoOszlop = new Oszlop();
+            Oszlop alsoOszlop = new Oszlop();
 
-			alsoOszlop.OszlopLetrehozas();
-			alsoOszlop.AlsoRect.SetValue(Canvas.LeftProperty, 700.0);
-			alsoOszlop.AlsoRect.SetValue(Canvas.TopProperty, (double)alsoOszlopTop);
-			alsoOszlop.FelsoRect.SetValue(Canvas.LeftProperty, 693.0);
-			alsoOszlop.FelsoRect.SetValue(Canvas.TopProperty, (double)alsoOszlopTop);
+            felsoOszlop.OszlopLetrehozas();
+            felsoOszlop.AlsoRect.SetValue(Canvas.LeftProperty, spawnX);
+            felsoOszlop.AlsoRect.SetValue(Canvas.TopProperty, (double)felsoOszlopTop);
+            felsoOszlop.FelsoRect.SetValue(Canvas.LeftProperty, spawnX - 7);
+            felsoOszlop.FelsoRect.SetValue(Canvas.TopProperty, (double)felsoOszlopTop + 250);
 
-			oszlopok.Add(felsoOszlop);
-			oszlopok.Add(alsoOszlop);
+            alsoOszlop.OszlopLetrehozas();
+            alsoOszlop.AlsoRect.SetValue(Canvas.LeftProperty, spawnX);
+            alsoOszlop.AlsoRect.SetValue(Canvas.TopProperty, (double)alsoOszlopTop);
+            alsoOszlop.FelsoRect.SetValue(Canvas.LeftProperty, spawnX - 7);
+            alsoOszlop.FelsoRect.SetValue(Canvas.TopProperty, (double)alsoOszlopTop);
 
-			canvas.Children.Add(felsoOszlop.AlsoRect);
-			canvas.Children.Add(felsoOszlop.FelsoRect);
-			canvas.Children.Add(alsoOszlop.AlsoRect);
-			canvas.Children.Add(alsoOszlop.FelsoRect);
-		}
+            oszlopok.Add(felsoOszlop);
+            oszlopok.Add(alsoOszlop);
 
-		private void Collision()
+            canvas.Children.Add(felsoOszlop.AlsoRect);
+            canvas.Children.Add(felsoOszlop.FelsoRect);
+            canvas.Children.Add(alsoOszlop.AlsoRect);
+            canvas.Children.Add(alsoOszlop.FelsoRect);
+
+            utolsoOszlopX = spawnX;
+        }
+
+
+        private void Collision()
 		{
 			Rect madarRect = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
 			EllipseGeometry madarGeo = new EllipseGeometry(madarRect);
 
-			foreach (var oszlop in oszlopok)
+			foreach (var oszlop in oszlopok.ToList())
 			{
 				Rect felsoRect = new Rect(Canvas.GetLeft(oszlop.FelsoRect), Canvas.GetTop(oszlop.FelsoRect), oszlop.FelsoRect.Width, oszlop.FelsoRect.Height);
 				RectangleGeometry felsoRectGeo = new RectangleGeometry(felsoRect);
