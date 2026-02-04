@@ -29,6 +29,7 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
         int score = 0;
         double madarX;
 
+        double ugras = 40;
 
         public MainWindow()
         {
@@ -66,6 +67,7 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 			else if (palya == "eső")
 			{
 				eso.Visibility = Visibility.Visible;
+                ugras = 20;
 			}
 
 			dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -113,7 +115,7 @@ namespace bjfdhbvfdhjvbjhsdfbjsfdhgb
 		{
 			if (e.Key == Key.Space)
 			{
-				madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) - 40);
+				madar.SetValue(Canvas.TopProperty, Canvas.GetTop(madar) - ugras);
 			}
 		}
 
